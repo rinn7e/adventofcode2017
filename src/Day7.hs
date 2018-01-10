@@ -31,23 +31,6 @@ main = do
     --     ]
     hClose handle 
 
-    -- putStrLn "Day 6"
-    -- print $ findRoot [
-    --       Node "gyxo" (Just "ugml")
-    --     , Node "ebii" (Just "ugml")
-    --     , Node "jptl" (Just "ugml")
-    --     , Node "ugml" (Just "tknk")
-    --     , Node "pbga" (Just "padx")
-    --     , Node "havc" (Just "padx")
-    --     , Node "qoyq" (Just "padx")
-    --     , Node "padx" (Just "tknk")
-    --     , Node "ktlj" (Just "fwft")
-    --     , Node "cntj" (Just "fwft")
-    --     , Node "xhth" (Just "fwft")
-    --     , Node "fwft" (Just "tknk")
-    --     , Node "tknk" Nothing
-    --     ]
--- convertToTuple :: [String] -> (String, [String])
 convertToTuple :: [String] -> (String, [String])
 convertToTuple list =
     let
@@ -62,13 +45,6 @@ convertToTuple list =
 removeComma :: [Char] -> [Char]
 removeComma string =
     delete ',' string
---     let
---         parent = headList
---         childList = case splitWhen (=="->") list of
---             (front, element:back) -> back
---             _ -> []
---     in
---     (parent, childList)
 
 convertToParentChild :: (String, [String]) -> [(String, String)]
 convertToParentChild (name, children) = 
@@ -93,38 +69,3 @@ getRoot initial list =
                         childPass
                     _ ->
                         getRoot' parent list 
-    -- case filterChild "ktlj" list of
-    --     x:xs ->
-    --         let
-    --             (parent, child) = x
-    --         in
-    --             filter parent list
-    --     _ ->
-
-
-data Node = 
-    Node String (Maybe String) deriving (Show)
-
--- readNode :: String -> Node
--- readNode input = 
---     let
---         list = words input
---     in 
---         Node (head list) (getParent list)
-
--- getParentList :: [String] -> Maybe String
--- getParentList 
-
-
-
-findRoot :: [Node] -> Node
-findRoot list =
-    head $ filter (\node ->
-        case node of
-            Node id maybeParent ->
-                maybeParent == Nothing
-    ) list
-
-convertInput :: String -> [Node]
-convertInput input = 
-    []
